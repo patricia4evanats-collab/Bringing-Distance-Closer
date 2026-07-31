@@ -9,3 +9,30 @@
             <img src="profilepic.jpg">
             <p>passionate about building digital communities and connecting people
 <h2>premium membership></h2>
+              <script>
+  const card = document.querySelector('body'); 
+  let startX = 0; 
+  let currentX = 0;
+
+  card.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+  });
+
+  card.addEventListener('touchmove', (e) => {
+      currentX = e.touches[0].clientX;
+  });
+
+  card.addEventListener('touchend', () => {
+      const diffX = currentX - startX;
+      if (Math.abs(diffX) > 50) {
+          if (diffX > 0) {
+              console.log('Swiped right!');
+              card.style.transform = 'translateX(1000px)';
+          } else {
+              console.log('Swiped left!');
+              card.style.transform = 'translateX(-1000px)';
+          }
+      }
+  });
+</script>
+
